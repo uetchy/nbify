@@ -3,8 +3,9 @@ var url = require('url');
 var path = require('path');
 var md2ipynb = require('md2ipynb');
 var express = require('express');
-
 var app = express();
+
+app.set('port', (process.env.PORT || 5000));
 
 app.get('/*', function(req, response) {
   var targetUrl = url.parse(req.params[0]);
@@ -21,8 +22,10 @@ app.get('/*', function(req, response) {
         });
       break;
     default:
-      response.send("Usage: http://nbify.herokuapp.com/<url> => .ipynb formatted data");
+      response.send("Usage: https://nbify.herokuapp.com/<url> => .ipynb formatted data");
   }
 });
 
-app.listen(3000);
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});

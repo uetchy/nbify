@@ -2,12 +2,12 @@
   "name": "nbtrans",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.13.1",
     "md2ipynb": "^0.1.0",
