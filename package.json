@@ -1,0 +1,16 @@
+{
+  "name": "nbtrans",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.1",
+    "md2ipynb": "^0.1.0",
+    "superagent": "^1.2.0"
+  }
+}
