@@ -1,12 +1,12 @@
 {
-  "name": "nbtrans",
+  "name": "nbify",
   "version": "1.0.0",
-  "description": "",
+  "description": "Transform blog posts into IPython Notebook over the air.",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
-  "author": "",
+  "author": "Yasuaki Uechi",
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.1",
