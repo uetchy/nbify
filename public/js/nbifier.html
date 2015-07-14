@@ -1,0 +1,15 @@
+<nbifier>
+  <h1>nbtrans</h1>
+  <p>Usage: https://nbify.herokuapp.com/:url: => .ipynb formatted data</p>
+  <form onsubmit={ nbify }>
+    <input>
+    <button>Nbify</button>
+  </form>
+
+  <script>
+    nbify(e) {
+      var input = e.target[0];
+      window.location.pathname = input.value;
+    }
+  </script>
+</nbifier>
