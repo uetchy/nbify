@@ -9,22 +9,34 @@ app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static('public'));
 
+function getMarkdownContent(urlString, callback) {
+  console.log(urlString);
+  request
+    .get(urlString)
+    .set('Accept', 'text/plain')
+    .end(function(err, data){
+      if ( err ) {
+        callback(err, null);
+        return;
+      }
+      var markdown = data.text;
+      callback(null, markdown);
+    });
+}
+
+app.get('/download/*', function(req, res) {
+  getMarkdownContent(req.params[0], function(err, markdown) {
+    res.type('text/plain');
+    res.attachment(itemId + ".ipynb");
+    res.send(md2ipynb(markdown));
+  });
+});
+
 app.get('/*', function(req, res) {
-  var targetUrl = url.parse(req.params[0]);
-  switch(targetUrl.hostname) {
-    case "qiita.com":
-      var itemId = path.basename(targetUrl.path);
-      var endpoint = "http://qiita.com/api/v2/items/"
-      request
-        .get(endpoint + itemId)
-        .end(function(err, data){
-          body = data.body.body;
-          res.type('text/plain');
-          res.attachment(itemId + ".ipynb");
-          res.send(md2ipynb(body));
-        });
-      break;
-  }
+  getMarkdownContent(req.params[0], function(err, markdown) {
+    res.type('text/plain');
+    res.send(md2ipynb(markdown));
+  });
 });
 
 app.listen(app.get('port'), function() {
