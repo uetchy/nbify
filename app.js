@@ -1,21 +1,15 @@
 var request = require('superagent');
-var url = require('url');
 var path = require('path');
 var md2ipynb = require('md2ipynb');
 var express = require('express');
 var app = express();
 
-app.set('port', (process.env.PORT || 5000));
-
-app.use(express.static('public'));
-
 function getMarkdownContent(urlString, callback) {
-  console.log(urlString);
   request
     .get(urlString)
     .set('Accept', 'text/plain')
-    .end(function(err, data){
-      if ( err ) {
+    .end(function(err, data) {
+      if (err) {
         callback(err, null);
         return;
       }
@@ -24,19 +18,41 @@ function getMarkdownContent(urlString, callback) {
     });
 }
 
-app.get('/download/*', function(req, res) {
+app.set('port', (process.env.PORT || 5000));
+app.use(express.static('public'));
+
+app.get('/download/*',
+  function(req, res, next) {
+    var markdownURL = req.params[0];
+    getMarkdownContent(markdownURL, function(err, markdown) {
+      if (err) return next(err);
+      res.type('text/plain');
+      res.attachment(path.basename(markdownURL) + ".ipynb");
+      res.send(md2ipynb(markdown));
+    });
+  });
+
+app.get('/*', function(req, res, next) {
   getMarkdownContent(req.params[0], function(err, markdown) {
+    if (err) return next(err);
     res.type('text/plain');
-    res.attachment(itemId + ".ipynb");
     res.send(md2ipynb(markdown));
   });
 });
 
-app.get('/*', function(req, res) {
-  getMarkdownContent(req.params[0], function(err, markdown) {
-    res.type('text/plain');
-    res.send(md2ipynb(markdown));
-  });
+app.use(function(err, req, res, next) {
+  console.log(err);
+  switch(err.code) {
+    case 'ECONNREFUSED':
+      res.send("Attempt to connect to the server was failed.");
+      break;
+    case 'ENOTFOUND':
+      res.send("Requested URL is invalid Markdown file.");
+      break;
+    default:
+      res.send(err.message);
+  }
+
 });
 
 app.listen(app.get('port'), function() {

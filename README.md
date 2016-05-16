@@ -4,12 +4,16 @@ Transform markdown files into IPython Notebook over the air.
 
 ## Usage
 
+Visit [nbify.herokuapp.com](http://nbify.herokuapp.com/).
+
+## Work with Qiita
+
 You can show Qiita articles on [nbviewer](http://nbviewer.ipython.org) through nbify([Example](http://nbviewer.ipython.org/urls/nbify.herokuapp.com/http://qiita.com/nkt_dev/items/3c66d45ca76d7f8cce19.md), [Original article](http://qiita.com/nkt_dev/items/3c66d45ca76d7f8cce19)).
 
 ```
-http://nbviewer.ipython.org/urls/
-	nbify.herokuapp.com/
-		http://path/to/markdown.md
+http://nbviewer.ipython.org/url/
+    nbify.herokuapp.com/
+        http://path/to/markdown.md
 ```
 
 ↓

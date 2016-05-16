@@ -1,19 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="UTF-8"/>
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/normalize/3.0.3/normalize.css">
-  <link rel="stylesheet" href="css/index.css"/>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>nbify</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
-
-<nbifier>
-<script src="js/nbifier.html" type="riot/tag"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/riot/2.2.1/riot+compiler.min.js"></script>
-<script>
-  riot.mount('nbifier');
-</script>
-
+  <div class="container">
+    <div class="row">
+      <h1>nbify <small>Convert Markdown to IPython Notebook</small></h1>
+      <p class="lead">Given Markdown URLs become .ipynb</p>
+      <nbifier>
+        <script src="js/nbifier.html" type="riot/tag"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.4.0/riot+compiler.min.js"></script>
+        <script>
+          riot.mount('nbifier');
+        </script>
+      </nbifier>
+    </div>
+    <div class="row">
+      <h3>Example</h3>
+      <ul class="list-group">
+        <li class="list-group-item">http://sebastianraschka.com/faq/docs/tensorflow-vs-scikitlearn.md</li>
+      </ul>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
+
 </html>

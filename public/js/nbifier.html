@@ -1,13 +1,21 @@
 <nbifier>
-  <h1>nbify</h1>
-  <p>Usage: https://nbify.herokuapp.com/:url: => .ipynb formatted data</p>
-  <form onsubmit={ nbify }>
-    <input>
-    <button>nbify</button>
+  <form onsubmit={ nbviewer }>
+    <div class="form-group">
+      <input type="url" class="form-control" placeholder="URL" required>
+    </div>
+    <div class="btn-group" role="group">
+      <button type="submit" class="btn btn-primary" onclick={ nbviewer }>View on nbviewer</button>
+      <button type="submit" class="btn btn-default" onclick={ nbdownload }>Download as .ipynb</button>
+    </div>
   </form>
 
   <script>
-    nbify(e) {
+    nbviewer(e) {
+      var input = e.target[0];
+      window.location.href = "http://nbviewer.jupyter.org/url/nbify.herokuapp.com/" + input.value;
+    }
+
+    nbdownload(e) {
       var input = e.target[0];
       window.location.pathname = "/download/" + input.value;
     }
