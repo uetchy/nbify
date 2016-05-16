@@ -1,22 +1,20 @@
 <nbifier>
-  <form onsubmit={ nbviewer }>
-    <div class="form-group">
-      <input type="url" class="form-control" placeholder="URL" required>
-    </div>
-    <div class="btn-group" role="group">
-      <button type="submit" class="btn btn-primary" onclick={ nbviewer }>View on nbviewer</button>
-      <button type="submit" class="btn btn-default" onclick={ nbdownload }>Download as .ipynb</button>
-    </div>
-  </form>
+  <div class="form-group">
+    <input id="form-input__url" type="url" class="form-control" placeholder="URL">
+  </div>
+  <div class="btn-group" role="group">
+    <button class="btn btn-primary" type="submit" onClick={ nbviewer }>View on nbviewer</button>
+    <button class="btn btn-default" type="submit" onClick={ nbdownload }>Download as .ipynb</button>
+  </div>
 
   <script>
     nbviewer(e) {
-      var input = e.target[0];
+      var input = document.getElementById('form-input__url');
       window.location.href = "http://nbviewer.jupyter.org/url/nbify.herokuapp.com/" + input.value;
     }
 
     nbdownload(e) {
-      var input = e.target[0];
+      var input = document.getElementById('form-input__url');
       window.location.pathname = "/download/" + input.value;
     }
   </script>
