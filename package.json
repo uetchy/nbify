@@ -9,8 +9,8 @@
   "author": "Yasuaki Uechi",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.14.0",
+    "express": "^4.16.3",
     "md2ipynb": "^0.2.1",
-    "superagent": "^3.5.2"
+    "superagent": "^3.8.2"
   }
 }
