@@ -10,8 +10,9 @@
   "dependencies": {
     "express": "^4.16.3",
     "md2ipynb": "^0.2.1",
-    "node-fetch": "^2.3.0",
-    "superagent": "^4.1.0"
+    "node-fetch": "^2.5.0",
+    "superagent": "^5.0.5"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "private": true
 }
