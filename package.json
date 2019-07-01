@@ -11,7 +11,7 @@
     "express": "^4.17.1",
     "md2ipynb": "^0.2.2",
     "node-fetch": "^2.6.0",
-    "superagent": "^5.0.7"
+    "superagent": "^5.1.0"
   },
   "license": "MIT",
   "private": true
